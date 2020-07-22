@@ -8,17 +8,20 @@
 
 import Foundation
 
-// Protocol for collections
 protocol CollectionBaseProtocol {
     var name: String { get }
+    var type: String? { get }
+}
+
+// Protocol for collections
+protocol AssetsBaseProtocol: CollectionBaseProtocol {
     var symbol: String { get }
     var logo: String { get }
     var logoDark: String { get }
 }
 
 // Protocol for wallets
-protocol WalletsBaseProtocol {
-    var name: String { get }
+protocol WalletsBaseProtocol: CollectionBaseProtocol {
     var balance: String { get }
     var cryptocoinId: String { get }
     var cryptocoinSymbol: String { get }

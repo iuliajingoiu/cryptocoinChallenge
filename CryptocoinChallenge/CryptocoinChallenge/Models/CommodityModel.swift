@@ -8,12 +8,13 @@
 
 import Foundation
 
-struct CommodityModel: Codable, CollectionBaseProtocol {
+struct CommodityModel: Decodable, AssetsBaseProtocol {
     let name: String
     let symbol: String
     let logo: String
     let logoDark: String
     let price: String
+    let type: String?
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -21,5 +22,15 @@ struct CommodityModel: Codable, CollectionBaseProtocol {
         case logo = "logo"
         case logoDark = "logo_dark"
         case price = "avg_price"
+        case type = "type"
+    }
+    
+    init(_ commodity: Commodity) {
+        name = commodity.attributes.name
+        symbol = commodity.attributes.symbol
+        logo = commodity.attributes.logo
+        logoDark = commodity.attributes.logoDark
+        price = commodity.attributes.price
+        type = commodity.type
     }
 }

@@ -8,13 +8,14 @@
 
 import Foundation
 
-struct WalletModel: Codable, WalletsBaseProtocol {
+struct WalletModel: Decodable, WalletsBaseProtocol {
     let name: String
     let balance: String
     let cryptocoinId: String
     let cryptocoinSymbol: String
     let isDefault: Bool
     let deleted: Bool
+    let type: String?
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -23,5 +24,6 @@ struct WalletModel: Codable, WalletsBaseProtocol {
         case cryptocoinSymbol = "cryptocoin_symbol"
         case isDefault = "is_default"
         case deleted = "deleted"
+        case type = "type"
     }
 }

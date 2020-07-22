@@ -20,7 +20,6 @@
 		EC99F1D024C753500006B9B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1A124C742670006B9B1 /* SceneDelegate.swift */; };
 		EC99F1D324C764540006B9B1 /* UISegmentedControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1D224C764540006B9B1 /* UISegmentedControl+Extension.swift */; };
 		EC99F1D724C76A090006B9B1 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1D624C76A090006B9B1 /* SegmentedControlView.swift */; };
-		EC99F1D924C76B880006B9B1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1D824C76B880006B9B1 /* BaseViewController.swift */; };
 		EC99F1DC24C76CE00006B9B1 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1DB24C76CE00006B9B1 /* UIStackView+Extension.swift */; };
 		EC99F1DE24C7705E0006B9B1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1DD24C7705E0006B9B1 /* UIViewController+Extension.swift */; };
 		EC99F1E324C7843E0006B9B1 /* CryptocoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1E224C7843E0006B9B1 /* CryptocoinModel.swift */; };
@@ -29,12 +28,15 @@
 		EC99F1E924C784960006B9B1 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1E824C784960006B9B1 /* WalletModel.swift */; };
 		EC99F1EB24C784B40006B9B1 /* CommodityWalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1EA24C784B40006B9B1 /* CommodityWalletModel.swift */; };
 		EC99F1ED24C784D10006B9B1 /* FiatWalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1EC24C784D10006B9B1 /* FiatWalletModel.swift */; };
-		EC99F1F424C78EBC0006B9B1 /* CryptocoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1F324C78EBC0006B9B1 /* CryptocoinViewModel.swift */; };
+		EC99F1F424C78EBC0006B9B1 /* CollectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1F324C78EBC0006B9B1 /* CollectionsViewModel.swift */; };
 		EC99F1F624C7915F0006B9B1 /* Mastrerdata.json in Resources */ = {isa = PBXBuildFile; fileRef = EC99F1F524C7915F0006B9B1 /* Mastrerdata.json */; };
 		EC99F1F924C792130006B9B1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1F824C792130006B9B1 /* DataManager.swift */; };
 		EC99F1FB24C79ADE0006B9B1 /* CollectionBaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1FA24C79ADE0006B9B1 /* CollectionBaseProtocol.swift */; };
 		EC99F1FD24C87F790006B9B1 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1FC24C87F790006B9B1 /* AssetsViewModel.swift */; };
-		EC99F20024C87F920006B9B1 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F1FF24C87F920006B9B1 /* WalletsViewModel.swift */; };
+		EC99F20424C892F90006B9B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F20324C892F90006B9B1 /* Constants.swift */; };
+		EC99F20624C894C70006B9B1 /* AssetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F20524C894C70006B9B1 /* AssetsTableViewController.swift */; };
+		EC99F20824C897620006B9B1 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F20724C897620006B9B1 /* WalletsViewModel.swift */; };
+		EC99F20B24C8A5BA0006B9B1 /* CollectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F20A24C8A5BA0006B9B1 /* CollectionTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +68,6 @@
 		EC99F1CE24C746D10006B9B1 /* WalletsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsController.swift; sourceTree = "<group>"; };
 		EC99F1D224C764540006B9B1 /* UISegmentedControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extension.swift"; sourceTree = "<group>"; };
 		EC99F1D624C76A090006B9B1 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
-		EC99F1D824C76B880006B9B1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EC99F1DB24C76CE00006B9B1 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		EC99F1DD24C7705E0006B9B1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		EC99F1E224C7843E0006B9B1 /* CryptocoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinModel.swift; sourceTree = "<group>"; };
@@ -75,12 +76,15 @@
 		EC99F1E824C784960006B9B1 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
 		EC99F1EA24C784B40006B9B1 /* CommodityWalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityWalletModel.swift; sourceTree = "<group>"; };
 		EC99F1EC24C784D10006B9B1 /* FiatWalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatWalletModel.swift; sourceTree = "<group>"; };
-		EC99F1F324C78EBC0006B9B1 /* CryptocoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinViewModel.swift; sourceTree = "<group>"; };
+		EC99F1F324C78EBC0006B9B1 /* CollectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewModel.swift; sourceTree = "<group>"; };
 		EC99F1F524C7915F0006B9B1 /* Mastrerdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mastrerdata.json; sourceTree = "<group>"; };
 		EC99F1F824C792130006B9B1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		EC99F1FA24C79ADE0006B9B1 /* CollectionBaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBaseProtocol.swift; sourceTree = "<group>"; };
 		EC99F1FC24C87F790006B9B1 /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
-		EC99F1FF24C87F920006B9B1 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
+		EC99F20324C892F90006B9B1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EC99F20524C894C70006B9B1 /* AssetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsTableViewController.swift; sourceTree = "<group>"; };
+		EC99F20724C897620006B9B1 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
+		EC99F20A24C8A5BA0006B9B1 /* CollectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableCell.swift; sourceTree = "<group>"; };
 		FECCC996869690EC75DD35BF /* Pods-CryptocoinChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptocoinChallenge.debug.xcconfig"; path = "Target Support Files/Pods-CryptocoinChallenge/Pods-CryptocoinChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +147,7 @@
 		EC99F19E24C742670006B9B1 /* CryptocoinChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				EC99F20224C892E80006B9B1 /* Utils */,
 				EC99F1D424C767A40006B9B1 /* AppDelegate */,
 				EC99F1D524C769F10006B9B1 /* Components */,
 				EC99F1D124C764310006B9B1 /* Extensions */,
@@ -152,6 +157,7 @@
 				EC99F1DF24C77E5C0006B9B1 /* Models */,
 				EC99F1C424C742DD0006B9B1 /* ViewModels */,
 				EC99F1C124C7429E0006B9B1 /* ViewControllers */,
+				EC99F20924C8A5870006B9B1 /* Cells */,
 				EC99F1AA24C742680006B9B1 /* LaunchScreen.storyboard */,
 				EC99F1AD24C742680006B9B1 /* Info.plist */,
 			);
@@ -170,10 +176,10 @@
 		EC99F1C124C7429E0006B9B1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EC99F1D824C76B880006B9B1 /* BaseViewController.swift */,
 				EC99F1CA24C7441A0006B9B1 /* TabBarViewController.swift */,
-				EC99F1CC24C746B50006B9B1 /* AssetsController.swift */,
 				EC99F1CE24C746D10006B9B1 /* WalletsController.swift */,
+				EC99F1CC24C746B50006B9B1 /* AssetsController.swift */,
+				EC99F20524C894C70006B9B1 /* AssetsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -200,8 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				EC99F1FC24C87F790006B9B1 /* AssetsViewModel.swift */,
-				EC99F1FF24C87F920006B9B1 /* WalletsViewModel.swift */,
-				EC99F1F324C78EBC0006B9B1 /* CryptocoinViewModel.swift */,
+				EC99F20724C897620006B9B1 /* WalletsViewModel.swift */,
+				EC99F1F324C78EBC0006B9B1 /* CollectionsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -253,6 +259,22 @@
 				EC99F1F824C792130006B9B1 /* DataManager.swift */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		EC99F20224C892E80006B9B1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EC99F20324C892F90006B9B1 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		EC99F20924C8A5870006B9B1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EC99F20A24C8A5BA0006B9B1 /* CollectionTableCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,11 +423,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC99F1ED24C784D10006B9B1 /* FiatWalletModel.swift in Sources */,
+				EC99F20B24C8A5BA0006B9B1 /* CollectionTableCell.swift in Sources */,
 				EC99F1F924C792130006B9B1 /* DataManager.swift in Sources */,
 				EC99F1E924C784960006B9B1 /* WalletModel.swift in Sources */,
 				EC99F1E324C7843E0006B9B1 /* CryptocoinModel.swift in Sources */,
 				EC99F1DE24C7705E0006B9B1 /* UIViewController+Extension.swift in Sources */,
-				EC99F20024C87F920006B9B1 /* WalletsViewModel.swift in Sources */,
+				EC99F20624C894C70006B9B1 /* AssetsTableViewController.swift in Sources */,
 				EC99F1FD24C87F790006B9B1 /* AssetsViewModel.swift in Sources */,
 				EC99F1D324C764540006B9B1 /* UISegmentedControl+Extension.swift in Sources */,
 				EC99F1CB24C7441A0006B9B1 /* TabBarViewController.swift in Sources */,
@@ -413,16 +436,17 @@
 				EC99F1E524C784660006B9B1 /* CommodityModel.swift in Sources */,
 				EC99F1C724C743530006B9B1 /* CoordinatorRespectable.swift in Sources */,
 				EC99F1D724C76A090006B9B1 /* SegmentedControlView.swift in Sources */,
-				EC99F1D924C76B880006B9B1 /* BaseViewController.swift in Sources */,
+				EC99F20824C897620006B9B1 /* WalletsViewModel.swift in Sources */,
 				EC99F1CD24C746B50006B9B1 /* AssetsController.swift in Sources */,
 				EC99F1FB24C79ADE0006B9B1 /* CollectionBaseProtocol.swift in Sources */,
 				EC99F1A024C742670006B9B1 /* AppDelegate.swift in Sources */,
-				EC99F1F424C78EBC0006B9B1 /* CryptocoinViewModel.swift in Sources */,
+				EC99F1F424C78EBC0006B9B1 /* CollectionsViewModel.swift in Sources */,
 				EC99F1E724C784770006B9B1 /* FiatModel.swift in Sources */,
 				EC99F1C924C743930006B9B1 /* ApplicationCoordinator.swift in Sources */,
 				EC99F1D024C753500006B9B1 /* SceneDelegate.swift in Sources */,
 				EC99F1DC24C76CE00006B9B1 /* UIStackView+Extension.swift in Sources */,
 				EC99F1EB24C784B40006B9B1 /* CommodityWalletModel.swift in Sources */,
+				EC99F20424C892F90006B9B1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -560,7 +584,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -8,12 +8,13 @@
 
 import Foundation
 
-struct CryptocoinModel: Codable, CollectionBaseProtocol {
+struct CryptocoinModel: Decodable, AssetsBaseProtocol {
     let name: String
     let symbol: String
     let logo: String
     let logoDark: String
     let price: String
+    let type: String?
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -21,6 +22,7 @@ struct CryptocoinModel: Codable, CollectionBaseProtocol {
         case logo = "logo"
         case logoDark = "logo_dark"
         case price = "avg_price"
+        case type = "type"
     }
     
     init(_ cryptocoin: Cryptocoin) {
@@ -29,5 +31,6 @@ struct CryptocoinModel: Codable, CollectionBaseProtocol {
         logo = cryptocoin.attributes.logo
         logoDark = cryptocoin.attributes.logoDark
         price = cryptocoin.attributes.price
+        type = cryptocoin.type
     }
 }

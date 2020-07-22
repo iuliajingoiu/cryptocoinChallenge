@@ -1,5 +1,5 @@
 //
-//  Wallets.swift
+//  Constants.swift
 //  CryptocoinChallenge
 //
 //  Created by Iulia Jingoiu on 22/07/2020.
@@ -7,3 +7,6 @@
 //
 
 import Foundation
+enum Constants {
+    static let animationDuration = 0.3
+}

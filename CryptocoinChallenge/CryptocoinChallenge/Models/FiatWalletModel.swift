@@ -9,13 +9,14 @@
 import Foundation
 
 struct FiatWalletModel: Codable {
-    let fiatID, fiatSymbol, balance, name: String
-    let pendingTransactionsCount: Int
+    let fiatId: String
+    let fiatSymbol: String
+    let balance: String
+    let name: String
 
     enum CodingKeys: String, CodingKey {
-        case fiatID = "fiat_id"
+        case fiatId = "fiat_id"
         case fiatSymbol = "fiat_symbol"
         case balance, name
-        case pendingTransactionsCount = "pending_transactions_count"
     }
 }

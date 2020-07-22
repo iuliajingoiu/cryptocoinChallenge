@@ -9,9 +9,9 @@
 import Foundation
 class AssetsViewModel {
         
-    var collections = [CollectionType]()
+    var collections = [CollectionKeyType]()
     
-    init(model: [CollectionType]? = nil) {
+    init(model: [CollectionKeyType]? = nil) {
         if let inputModel = model {
             collections = inputModel
         }
@@ -20,7 +20,7 @@ class AssetsViewModel {
 
 // MARK: - Helpers
 extension AssetsViewModel {
-    func fetchCollections(completion: @escaping (Result<[CollectionType], Error>) -> Void) {
+    func fetchCollections(completion: @escaping (Result<[CollectionKeyType], Error>) -> Void) {
         self.collections = DataManager.sharedInstance.collections
         completion(.success(self.collections))
     }

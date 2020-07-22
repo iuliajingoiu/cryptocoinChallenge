@@ -8,12 +8,13 @@
 
 import UIKit
 
-class AssetsController: BaseViewController {
+class AssetsController: UIViewController {
 
     private(set) weak var segmentedControlView: SegmentedControlView!
     private(set) var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     private(set) var pages = [UIViewController]()
     private(set) var assetsViewModel = AssetsViewModel()
+    private(set) var collectionsViewModel = CollectionsViewModel()
     
     // MARK: - Init
     init() {
@@ -66,9 +67,35 @@ extension AssetsController {
     private func fetchCollections() {
         assetsViewModel.fetchCollections{ [weak self] collections in
             DispatchQueue.main.async {
-                // TODO: - Find a nicer way to do this
-                self?.segmentedControlView.items = self?.assetsViewModel.collections.map { $0.rawValue } ?? ["No assets"]
+                guard let self = self else {
+                    return
+                }
+                self.segmentedControlView.items = self.assetsViewModel.collections.map { $0.rawValue }
             }
+        }
+        
+        collectionsViewModel.fetchCryptocoins { [weak self] cryptocoins in
+            guard let self = self else {
+                return
+            }
+            let cryptocoinController = AssetsTableViewController(data: self.collectionsViewModel.cryptocoins)
+            self.pages.append(cryptocoinController)
+        }
+        
+        collectionsViewModel.fetchCommodities { [weak self] commodities in
+            guard let self = self else {
+                return
+            }
+            let commoditiesController = AssetsTableViewController(data: self.collectionsViewModel.commodities)
+            self.pages.append(commoditiesController)
+        }
+        
+        collectionsViewModel.fetchFiats { [weak self] fiats in
+            guard let self = self else {
+                return
+            }
+            let fiatsController = AssetsTableViewController(data: self.collectionsViewModel.fiats)
+            self.pages.append(fiatsController)
         }
     }
 }

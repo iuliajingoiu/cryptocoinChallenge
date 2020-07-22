@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletsController: BaseViewController {
+class WalletsController: UIViewController {
 
     // MARK: - Lifecycle
     override func viewDidLoad() {

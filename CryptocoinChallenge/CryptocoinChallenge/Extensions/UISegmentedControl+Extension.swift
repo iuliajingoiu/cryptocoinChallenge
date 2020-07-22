@@ -46,6 +46,7 @@ extension UISegmentedControl {
         }
 
         let underlineXPosition = (bounds.width / CGFloat(numberOfSegments)) * CGFloat(selectedSegmentIndex)
+        
         underline.snp.updateConstraints {
             $0.leading.equalTo(underlineXPosition)
         }

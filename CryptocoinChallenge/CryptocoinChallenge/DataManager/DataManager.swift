@@ -8,13 +8,23 @@
 
 import Foundation
 
-enum CollectionType: String {
-    case cryptocoins
-    case commodities
-    case fiats
-    case wallets
+enum CollectionKeyType: String {
+    case cryptocoins = "cryptocoins"
+    case commodities = "commodities"
+    case fiats = "fiats"
+    case wallets = "wallets"
     case commodityWallets = "commodity_wallets"
     case fiatWallets = "fiatwallets"
+    case unknown
+}
+
+enum CollectionType: String {
+    case cryptocoin = "cryptocoin"
+    case commodity = "commodity"
+    case fiat = "fiat"
+    case wallet = "wallet"
+    case fiatWallet = "fiat_wallet"
+    case unknown
 }
 
 // MARK: - DataManager
@@ -24,7 +34,7 @@ class DataManager: NSObject {
     var data: MasterDataModel?
     
     // Computed Variables
-    var collections: [CollectionType] {
+    var collections: [CollectionKeyType] {
         guard let data = data else {
             DataManager.sharedInstance.parseData()
             if let newlyParcedData = self.data {
@@ -35,7 +45,7 @@ class DataManager: NSObject {
         return mapCollectionsToSegmentItems(for: data)
     }
     
-    var wallets: [CollectionType] {
+    var wallets: [CollectionKeyType] {
         guard let data = data else {
             DataManager.sharedInstance.parseData()
             if let newlyParcedData = self.data {
@@ -56,6 +66,28 @@ class DataManager: NSObject {
         }
         return data.data.attributes.cryptocoins
     }
+    
+    var commodities: [Commodity] {
+        guard let data = data else {
+            DataManager.sharedInstance.parseData()
+            if let newlyParcedData = self.data {
+                return newlyParcedData.data.attributes.commodities
+            }
+            return []
+        }
+        return data.data.attributes.commodities
+    }
+    
+    var fiats: [Fiat] {
+        guard let data = data else {
+            DataManager.sharedInstance.parseData()
+            if let newlyParcedData = self.data {
+                return newlyParcedData.data.attributes.fiats
+            }
+            return []
+        }
+        return data.data.attributes.fiats
+    }
 }
 
 extension DataManager {
@@ -71,16 +103,16 @@ extension DataManager {
         }
     }
     
-    private func mapCollectionsToSegmentItems(for data: MasterDataModel) -> [CollectionType] {
-        var collectionTypes = [CollectionType]()
+    private func mapCollectionsToSegmentItems(for data: MasterDataModel) -> [CollectionKeyType] {
+        var collectionTypes = [CollectionKeyType]()
         if !data.data.attributes.cryptocoins.isEmpty { collectionTypes.append(.cryptocoins) }
         if !data.data.attributes.commodities.isEmpty { collectionTypes.append(.commodities) }
         if !data.data.attributes.fiats.isEmpty { collectionTypes.append(.fiats) }
         return collectionTypes
     }
     
-    private func mapWalletsToSegmentItems(for data: MasterDataModel) -> [CollectionType] {
-        var collectionTypes = [CollectionType]()
+    private func mapWalletsToSegmentItems(for data: MasterDataModel) -> [CollectionKeyType] {
+        var collectionTypes = [CollectionKeyType]()
         if !data.data.attributes.wallets.isEmpty { collectionTypes.append(.wallets) }
         if !data.data.attributes.commodityWallets.isEmpty { collectionTypes.append(.commodityWallets) }
         if !data.data.attributes.fiatwallets.isEmpty { collectionTypes.append(.fiatWallets) }
@@ -90,21 +122,21 @@ extension DataManager {
 
 
 // MARK: - Models
-struct MasterDataModel: Codable {
+struct MasterDataModel: Decodable {
     let data: DataAttributesModel
     enum CodingKeys: String, CodingKey {
         case data
     }
 }
 
-struct DataAttributesModel: Codable {
+struct DataAttributesModel: Decodable {
     let attributes: DataAttributes
     enum CodingKeys: String, CodingKey {
         case attributes
     }
 }
 
-struct DataAttributes: Codable {
+struct DataAttributes: Decodable {
     let cryptocoins: [Cryptocoin]
     let commodities: [Commodity]
     let fiats: [Fiat]
@@ -119,38 +151,38 @@ struct DataAttributes: Codable {
 }
 
 // Collections
-struct Cryptocoin: Codable {
+struct Cryptocoin: Decodable {
     let type: String
     let attributes: CryptocoinModel
     let id: String
 }
 
-struct Commodity: Codable {
+struct Commodity: Decodable {
     let type: String
     let attributes: CommodityModel
     let id: String
 }
 
-struct Fiat: Codable {
+struct Fiat: Decodable {
     let type: String
     let attributes: FiatModel
     let id: String
 }
 
 // Wallets
-struct Wallet: Codable {
+struct Wallet: Decodable {
     let type: String
     let attributes: WalletModel
     let id: String
 }
 
-struct Commoditywallet: Codable {
+struct Commoditywallet: Decodable {
     let type: String
     let attributes: CommodityWalletModel
     let id: String
 }
 
-struct Fiatwallet: Codable {
+struct Fiatwallet: Decodable {
     let type: String
     let attributes: FiatWalletModel
     let id: String
