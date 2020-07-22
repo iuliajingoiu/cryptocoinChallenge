@@ -15,6 +15,7 @@ struct CryptocoinModel: Decodable, AssetsBaseProtocol {
     let logoDark: String
     let price: String
     let type: String?
+    let precisionForFiatPrice: Int
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -23,6 +24,7 @@ struct CryptocoinModel: Decodable, AssetsBaseProtocol {
         case logoDark = "logo_dark"
         case price = "avg_price"
         case type = "type"
+        case precisionForFiatPrice = "precision_for_fiat_price"
     }
     
     init(_ cryptocoin: Cryptocoin) {
@@ -30,7 +32,12 @@ struct CryptocoinModel: Decodable, AssetsBaseProtocol {
         symbol = cryptocoin.attributes.symbol
         logo = cryptocoin.attributes.logo
         logoDark = cryptocoin.attributes.logoDark
+        precisionForFiatPrice = cryptocoin.attributes.precisionForFiatPrice
         price = cryptocoin.attributes.price
         type = cryptocoin.type
+    }
+    
+    var formattedPrice: String {
+        return price.format(for: precisionForFiatPrice)
     }
 }

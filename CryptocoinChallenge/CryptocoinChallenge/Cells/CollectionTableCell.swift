@@ -106,7 +106,7 @@ extension CollectionTableCell {
         
         nameLabel.text = model.name
         symbolLabel.text = model.symbol
-        detailsLabel.text = model.price
+        detailsLabel.text = model.formattedPrice
     }
     
     private func loadDataForComodity(_ model: CollectionBaseProtocol) {
@@ -117,7 +117,7 @@ extension CollectionTableCell {
         iconImageView.sd_setImage(with: URL(string: model.logo), placeholderImage: UIImage(named: "placeholder.png"))
         nameLabel.text = model.name
         symbolLabel.text = model.symbol
-        detailsLabel.text = model.price
+        detailsLabel.text = model.formattedPrice
     }
     
     private func loadDataForFiats(_ model: CollectionBaseProtocol) {
