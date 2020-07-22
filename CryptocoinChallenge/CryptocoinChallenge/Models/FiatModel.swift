@@ -14,6 +14,7 @@ struct FiatModel: Decodable, AssetsBaseProtocol {
     let logo: String
     let logoDark: String
     let type: String?
+    let hasWallets: Bool
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -21,6 +22,7 @@ struct FiatModel: Decodable, AssetsBaseProtocol {
         case logo = "logo"
         case logoDark = "logo_dark"
         case type = "type"
+        case hasWallets = "has_wallets"
     }
     
     init(_ fiat: Fiat) {
@@ -28,6 +30,7 @@ struct FiatModel: Decodable, AssetsBaseProtocol {
         symbol = fiat.attributes.symbol
         logo = fiat.attributes.logo
         logoDark = fiat.attributes.logoDark
+        hasWallets = fiat.attributes.hasWallets
         type = fiat.type
     }
 }

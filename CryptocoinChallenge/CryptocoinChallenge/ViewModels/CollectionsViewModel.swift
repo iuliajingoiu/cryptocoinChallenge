@@ -48,7 +48,9 @@ extension CollectionsViewModel {
         let fiats: [Fiat] = DataManager.sharedInstance.fiats
         
         // Map them  to the model we need
-        self.fiats = fiats.compactMap {
+        self.fiats = fiats
+            .filter({ $0.attributes.hasWallets == true })
+            .compactMap {
             return FiatModel($0)
         }
         
