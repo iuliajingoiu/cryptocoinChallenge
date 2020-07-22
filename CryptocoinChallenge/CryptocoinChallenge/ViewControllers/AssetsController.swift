@@ -16,15 +16,6 @@ class AssetsController: UIViewController {
     private(set) var assetsViewModel = AssetsViewModel()
     private(set) var collectionsViewModel = CollectionsViewModel()
     
-    // MARK: - Init
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

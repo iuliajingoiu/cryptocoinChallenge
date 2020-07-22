@@ -88,6 +88,40 @@ class DataManager: NSObject {
         }
         return data.data.attributes.fiats
     }
+    
+    // Wallets
+    var walletsList: [Wallet] {
+        guard let data = data else {
+            DataManager.sharedInstance.parseData()
+            if let newlyParcedData = self.data {
+                return newlyParcedData.data.attributes.wallets
+            }
+            return []
+        }
+        return data.data.attributes.wallets
+    }
+    
+    var commodityWalletsList: [Commoditywallet] {
+        guard let data = data else {
+            DataManager.sharedInstance.parseData()
+            if let newlyParcedData = self.data {
+                return newlyParcedData.data.attributes.commodityWallets
+            }
+            return []
+        }
+        return data.data.attributes.commodityWallets
+    }
+    
+    var fiatWalletsList: [Fiatwallet] {
+        guard let data = data else {
+            DataManager.sharedInstance.parseData()
+            if let newlyParcedData = self.data {
+                return newlyParcedData.data.attributes.fiatwallets
+            }
+            return []
+        }
+        return data.data.attributes.fiatwallets
+    }
 }
 
 extension DataManager {

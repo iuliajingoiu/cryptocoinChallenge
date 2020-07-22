@@ -8,15 +8,24 @@
 
 import Foundation
 
-struct FiatWalletModel: Codable {
+struct FiatWalletModel: Codable, CollectionBaseProtocol {
     let fiatId: String
     let fiatSymbol: String
     let balance: String
     let name: String
+    let type: String?
 
     enum CodingKeys: String, CodingKey {
         case fiatId = "fiat_id"
         case fiatSymbol = "fiat_symbol"
-        case balance, name
+        case type, balance, name
+    }
+    
+    init(_ wallet: Fiatwallet) {
+        fiatId = wallet.attributes.fiatId
+        fiatSymbol = wallet.attributes.fiatSymbol
+        name = wallet.attributes.name
+        balance = wallet.attributes.balance
+        type = wallet.type
     }
 }

@@ -77,9 +77,12 @@ class CollectionTableCell: UITableViewCell {
             loadDataForComodity(model)
         case .fiat:
             loadDataForFiats(model)
+        case .wallet:
+            loadDataForWallets(model)
+        case .fiatWallet:
+            loadDataForFiatWallets(model)
         default:
             break
-            // TODO: - handle the cases for wallets
         }
     }
     override func prepareForReuse() {
@@ -111,7 +114,6 @@ extension CollectionTableCell {
             return
         }
         
-        // TODO: - Add a nice placeholder
         iconImageView.sd_setImage(with: URL(string: model.logo), placeholderImage: UIImage(named: "placeholder.png"))
         nameLabel.text = model.name
         symbolLabel.text = model.symbol
@@ -123,11 +125,39 @@ extension CollectionTableCell {
             return
         }
         
-        // TODO: - Add a nice placeholder
-        
         iconImageView.sd_setImage(with: URL(string: model.logo), placeholderImage: UIImage(named: "placeholder.png"))
         nameLabel.text = model.name
         symbolLabel.text = model.symbol
+    }
+    
+    private func loadDataForWallets(_ model: CollectionBaseProtocol) {
+        
+        // TO DO: - find a nicer way
+        if let walletModel = model as? WalletModel {
+            symbolLabel.text = walletModel.cryptocoinSymbol
+            detailsLabel.text = walletModel.balance
+        }
+        
+        if let commodityWalletModel = model as? CommodityWalletModel {
+            symbolLabel.text = commodityWalletModel.cryptocoinSymbol
+            detailsLabel.text = commodityWalletModel.balance
+        }
+
+        // TODO: - Missing logo from json - to discuss
+        iconImageView.sd_setImage(with: nil, placeholderImage: UIImage(named: "placeholder.png"))
+        nameLabel.text = model.name
+    }
+    
+    private func loadDataForFiatWallets(_ model: CollectionBaseProtocol) {
+        guard  let model = model as? FiatWalletModel else {
+            return
+        }
+        
+        // TODO: - Missing logo from json - to discuss
+        iconImageView.sd_setImage(with: nil, placeholderImage: UIImage(named: "placeholder.png"))
+        nameLabel.text = model.name
+        symbolLabel.text = model.fiatSymbol
+        detailsLabel.text = model.balance
     }
 }
 

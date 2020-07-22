@@ -26,4 +26,14 @@ struct WalletModel: Decodable, WalletsBaseProtocol {
         case deleted = "deleted"
         case type = "type"
     }
+    
+    init(_ wallet: Wallet) {
+        name = wallet.attributes.name
+        balance = wallet.attributes.balance
+        cryptocoinId = wallet.attributes.cryptocoinId
+        cryptocoinSymbol = wallet.attributes.cryptocoinSymbol
+        isDefault = wallet.attributes.isDefault
+        deleted = wallet.attributes.deleted
+        type = wallet.type
+    }
 }
