@@ -101,6 +101,8 @@ class CollectionTableCell: UITableViewCell {
         self.nameLabel.text = nil
         self.symbolLabel.text = nil
         self.detailsLabel.text = nil
+        self.defaultWalletImageView.image = nil
+        self.iconImageView.image = nil
     }
 }
 
@@ -111,7 +113,7 @@ extension CollectionTableCell {
             return
         }
         
-        // TODO: - Search for more alternatives - this one and Kingfisher does not work for svg
+        // TODO: - Search for more alternatives - this one and Kingfisher do not work for svg
 //        iconImageView.sd_setImage(with: URL(string: "https://image.flaticon.com/icons/png/512/1205/1205526.png"), placeholderImage: UIImage(named: "placeholder.png"))
         iconImageView.sd_setImage(with: URL(string: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Capi_x_Raven.svg"), placeholderImage: UIImage(named: "placeholder.png"))
         

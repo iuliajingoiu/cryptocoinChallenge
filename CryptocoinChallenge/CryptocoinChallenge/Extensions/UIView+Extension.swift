@@ -2,7 +2,7 @@
 //  UIView+Extension.swift
 //  CryptocoinChallenge
 //
-//  Created by George Jingoiu on 23/07/2020.
+//  Created by Iulia Jingoiu on 23/07/2020.
 //  Copyright © 2020 Iulia Jingoiu. All rights reserved.
 //
 

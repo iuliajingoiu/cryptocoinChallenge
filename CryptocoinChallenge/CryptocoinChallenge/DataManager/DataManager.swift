@@ -16,6 +16,25 @@ enum CollectionKeyType: String {
     case commodityWallets = "commodity_wallets"
     case fiatWallets = "fiatwallets"
     case unknown
+    
+    var title: String {
+        switch self {
+        case .cryptocoins:
+            return "Cryptocoins"
+        case .commodities:
+            return "Commodities"
+        case .fiats:
+            return "Fiats"
+        case .wallets:
+            return "Wallets"
+        case .commodityWallets:
+            return "Commodity Wallets"
+        case .fiatWallets:
+            return "Fiat Wallets"
+        default:
+            return ""
+        }
+    }
 }
 
 enum CollectionType: String {

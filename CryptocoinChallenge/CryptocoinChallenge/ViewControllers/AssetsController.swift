@@ -61,32 +61,39 @@ extension AssetsController {
                 guard let self = self else {
                     return
                 }
-                self.segmentedControlView.items = self.assetsViewModel.collections.map { $0.rawValue }
+                self.segmentedControlView.items = self.assetsViewModel.collections.map { $0.title }
             }
         }
         
         collectionsViewModel.fetchCryptocoins { [weak self] cryptocoins in
-            guard let self = self else {
-                return
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+                let cryptocoinController = AssetsTableViewController(data: self.collectionsViewModel.cryptocoins)
+                self.pages.append(cryptocoinController)
+                self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: false, completion: nil)
             }
-            let cryptocoinController = AssetsTableViewController(data: self.collectionsViewModel.cryptocoins)
-            self.pages.append(cryptocoinController)
         }
         
         collectionsViewModel.fetchCommodities { [weak self] commodities in
-            guard let self = self else {
-                return
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+                let commoditiesController = AssetsTableViewController(data: self.collectionsViewModel.commodities)
+                self.pages.append(commoditiesController)
             }
-            let commoditiesController = AssetsTableViewController(data: self.collectionsViewModel.commodities)
-            self.pages.append(commoditiesController)
         }
         
         collectionsViewModel.fetchFiats { [weak self] fiats in
-            guard let self = self else {
-                return
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+                let fiatsController = AssetsTableViewController(data: self.collectionsViewModel.fiats)
+                self.pages.append(fiatsController)
             }
-            let fiatsController = AssetsTableViewController(data: self.collectionsViewModel.fiats)
-            self.pages.append(fiatsController)
         }
     }
 }

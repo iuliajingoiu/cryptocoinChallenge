@@ -58,32 +58,39 @@ class WalletsController: UIViewController {
                 guard let self = self else {
                     return
                 }
-                self.segmentedControlView.items = self.walletsViewModel.wallets.map { $0.rawValue }
+                self.segmentedControlView.items = self.walletsViewModel.wallets.map { $0.title }
             }
         }
         
         collectionsViewModel.fetchWallets { [weak self] wallets in
-            guard let self = self else {
-                return
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+                let walletsController = AssetsTableViewController(data: self.collectionsViewModel.wallets)
+                self.pages.append(walletsController)
+                self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: false, completion: nil)
             }
-            let walletsController = AssetsTableViewController(data: self.collectionsViewModel.wallets)
-            self.pages.append(walletsController)
         }
         
         collectionsViewModel.fetchCommodityWallets { [weak self] commodityWallets in
-            guard let self = self else {
-                return
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+                let commodityWalletsController = AssetsTableViewController(data: self.collectionsViewModel.commodityWallets)
+                self.pages.append(commodityWalletsController)
             }
-            let commodityWalletsController = AssetsTableViewController(data: self.collectionsViewModel.commodityWallets)
-            self.pages.append(commodityWalletsController)
         }
         
         collectionsViewModel.fetchFiatWallets { [weak self] fiatWallets in
-            guard let self = self else {
-                return
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+                let fiatsWalletsController = AssetsTableViewController(data: self.collectionsViewModel.fiatWallets)
+                self.pages.append(fiatsWalletsController)
             }
-            let fiatsWalletsController = AssetsTableViewController(data: self.collectionsViewModel.fiatWallets)
-            self.pages.append(fiatsWalletsController)
         }
     }
 }
