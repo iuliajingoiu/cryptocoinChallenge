@@ -63,11 +63,13 @@ extension CollectionsViewModel {
         let wallets: [Wallet] = DataManager.sharedInstance.walletsList
         
         // Map them  to the model we need
-        self.wallets = wallets.compactMap {
-            return WalletModel($0)
-        }.sorted(by: { (item1, item2) -> Bool in
-            item1.balance.floatValue() >= item2.balance.floatValue()
-        })
+        self.wallets = wallets
+            .filter({ $0.attributes.deleted == false })
+            .compactMap {
+                return WalletModel($0)
+            }.sorted(by: { (item1, item2) -> Bool in
+                item1.balance.floatValue() >= item2.balance.floatValue()
+            })
         
         completion(.success(self.wallets))
     }
@@ -77,11 +79,13 @@ extension CollectionsViewModel {
         let wallets: [Commoditywallet] = DataManager.sharedInstance.commodityWalletsList
         
         // Map them  to the model we need
-        self.commodityWallets = wallets.compactMap {
-            return CommodityWalletModel($0)
-        }.sorted(by: { (item1, item2) -> Bool in
-            item1.balance.floatValue() >= item2.balance.floatValue()
-        })
+        self.commodityWallets = wallets
+            .filter({ $0.attributes.deleted == false })
+            .compactMap {
+                return CommodityWalletModel($0)
+            }.sorted(by: { (item1, item2) -> Bool in
+                item1.balance.floatValue() >= item2.balance.floatValue()
+            })
         
         completion(.success(self.commodityWallets))
     }
