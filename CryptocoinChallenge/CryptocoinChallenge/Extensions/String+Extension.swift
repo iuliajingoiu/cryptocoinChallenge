@@ -15,6 +15,13 @@ extension String {
             return self
         }
     }
+    
+    func floatValue() -> Float {
+        guard let newVal = Float(self) else {
+            return 0.0
+        }
+        return newVal
+    }
 }
 
 extension Float {

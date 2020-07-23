@@ -65,7 +65,9 @@ extension CollectionsViewModel {
         // Map them  to the model we need
         self.wallets = wallets.compactMap {
             return WalletModel($0)
-        }
+        }.sorted(by: { (item1, item2) -> Bool in
+            item1.balance.floatValue() >= item2.balance.floatValue()
+        })
         
         completion(.success(self.wallets))
     }
@@ -77,7 +79,9 @@ extension CollectionsViewModel {
         // Map them  to the model we need
         self.commodityWallets = wallets.compactMap {
             return CommodityWalletModel($0)
-        }
+        }.sorted(by: { (item1, item2) -> Bool in
+            item1.balance.floatValue() >= item2.balance.floatValue()
+        })
         
         completion(.success(self.commodityWallets))
     }
@@ -89,7 +93,9 @@ extension CollectionsViewModel {
         // Map them  to the model we need
         self.fiatWallets = wallets.compactMap {
             return FiatWalletModel($0)
-        }
+        }.sorted(by: { (item1, item2) -> Bool in
+            item1.balance.floatValue() >= item2.balance.floatValue()
+        })
         
         completion(.success(self.fiatWallets))
     }
