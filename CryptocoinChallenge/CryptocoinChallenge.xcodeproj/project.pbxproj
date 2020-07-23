@@ -38,6 +38,7 @@
 		EC99F20824C897620006B9B1 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F20724C897620006B9B1 /* WalletsViewModel.swift */; };
 		EC99F20B24C8A5BA0006B9B1 /* CollectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F20A24C8A5BA0006B9B1 /* CollectionTableCell.swift */; };
 		EC99F20F24C8FF090006B9B1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F20E24C8FF090006B9B1 /* String+Extension.swift */; };
+		EC99F21324C9A9BD0006B9B1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F21224C9A9BD0006B9B1 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		EC99F20724C897620006B9B1 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
 		EC99F20A24C8A5BA0006B9B1 /* CollectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableCell.swift; sourceTree = "<group>"; };
 		EC99F20E24C8FF090006B9B1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		EC99F21224C9A9BD0006B9B1 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		FECCC996869690EC75DD35BF /* Pods-CryptocoinChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptocoinChallenge.debug.xcconfig"; path = "Target Support Files/Pods-CryptocoinChallenge/Pods-CryptocoinChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +223,7 @@
 				EC99F1DB24C76CE00006B9B1 /* UIStackView+Extension.swift */,
 				EC99F1DD24C7705E0006B9B1 /* UIViewController+Extension.swift */,
 				EC99F20E24C8FF090006B9B1 /* String+Extension.swift */,
+				EC99F21224C9A9BD0006B9B1 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				EC99F1D324C764540006B9B1 /* UISegmentedControl+Extension.swift in Sources */,
 				EC99F1CB24C7441A0006B9B1 /* TabBarViewController.swift in Sources */,
 				EC99F1CF24C746D10006B9B1 /* WalletsController.swift in Sources */,
+				EC99F21324C9A9BD0006B9B1 /* UIView+Extension.swift in Sources */,
 				EC99F1E524C784660006B9B1 /* CommodityModel.swift in Sources */,
 				EC99F1C724C743530006B9B1 /* CoordinatorRespectable.swift in Sources */,
 				EC99F1D724C76A090006B9B1 /* SegmentedControlView.swift in Sources */,
