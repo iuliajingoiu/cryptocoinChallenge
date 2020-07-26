@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImageSVGKitPlugin
 
 class CollectionTableCell: UITableViewCell {
 
@@ -34,6 +33,7 @@ class CollectionTableCell: UITableViewCell {
     private func setupUI() {
         let iconImageView = UIImageView()
         iconImageView.contentMode = .scaleAspectFit
+        iconImageView.image = UIImage(named: "placeholder.png")
         iconImageView.snp.makeConstraints {
             $0.height.width.equalTo(48)
         }
@@ -112,25 +112,22 @@ extension CollectionTableCell {
         guard  let model = model as? CryptocoinModel else {
             return
         }
-        
-        // TODO: - Search for more alternatives - this one and Kingfisher do not work for svg
-//        iconImageView.sd_setImage(with: URL(string: "https://image.flaticon.com/icons/png/512/1205/1205526.png"), placeholderImage: UIImage(named: "placeholder.png"))
-        iconImageView.sd_setImage(with: URL(string: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Capi_x_Raven.svg"), placeholderImage: UIImage(named: "placeholder.png"))
-        
+    
         nameLabel.text = model.name
         symbolLabel.text = model.symbol
         detailsLabel.text = model.formattedPrice
+        iconImageView.loadSvg(from: model.logo, placeholder: UIImage(named: "placeholder.png"))
     }
     
     private func loadDataForComodity(_ model: CollectionBaseProtocol) {
         guard  let model = model as? CommodityModel else {
             return
         }
-        
-        iconImageView.sd_setImage(with: URL(string: model.logo), placeholderImage: UIImage(named: "placeholder.png"))
+    
         nameLabel.text = model.name
         symbolLabel.text = model.symbol
         detailsLabel.text = model.formattedPrice
+        iconImageView.loadSvg(from: model.logo, placeholder: UIImage(named: "placeholder.png"))
     }
     
     private func loadDataForFiats(_ model: CollectionBaseProtocol) {
@@ -138,7 +135,7 @@ extension CollectionTableCell {
             return
         }
         
-        iconImageView.sd_setImage(with: URL(string: model.logo), placeholderImage: UIImage(named: "placeholder.png"))
+        iconImageView.loadSvg(from: model.logo, placeholder: UIImage(named: "placeholder.png"))
         nameLabel.text = model.name
         symbolLabel.text = model.symbol
     }
@@ -150,7 +147,7 @@ extension CollectionTableCell {
             symbolLabel.text = walletModel.cryptocoinSymbol
             detailsLabel.text = walletModel.balance
             if walletModel.isDefault {
-                defaultWalletImageView.sd_setImage(with: nil, placeholderImage: UIImage(named: "defaultWallet.png"))
+                defaultWalletImageView.image = UIImage(named: "defaultWallet.png")
             }
         }
         
@@ -158,12 +155,12 @@ extension CollectionTableCell {
             symbolLabel.text = commodityWalletModel.cryptocoinSymbol
             detailsLabel.text = commodityWalletModel.balance
             if commodityWalletModel.isDefault {
-                defaultWalletImageView.sd_setImage(with: nil, placeholderImage: UIImage(named: "defaultWallet.png"))
+                defaultWalletImageView.image = UIImage(named: "defaultWallet.png")
             }
         }
 
         // TODO: - Missing logo from json - to discuss
-        iconImageView.sd_setImage(with: nil, placeholderImage: UIImage(named: "placeholder.png"))
+        iconImageView.loadSvg(from: nil, placeholder: UIImage(named: "placeholder.png"))
         nameLabel.text = model.name
     }
     
@@ -173,7 +170,7 @@ extension CollectionTableCell {
         }
         
         // TODO: - Missing logo from json - to discuss
-        iconImageView.sd_setImage(with: nil, placeholderImage: UIImage(named: "placeholder.png"))
+        iconImageView.loadSvg(from: nil, placeholder: UIImage(named: "placeholder.png"))
         nameLabel.text = model.name
         symbolLabel.text = model.fiatSymbol
         detailsLabel.text = model.balance

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C031513F4C4634DB0D5A99E /* Pods_CryptocoinChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61EEB71DD691BAA6A1F3C7DC /* Pods_CryptocoinChallenge.framework */; };
+		EC0E730724CE24C900557D63 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E730624CE24C900557D63 /* UIImageView+Extension.swift */; };
 		EC99F1A024C742670006B9B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F19F24C742670006B9B1 /* AppDelegate.swift */; };
 		EC99F1A924C742680006B9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC99F1A824C742680006B9B1 /* Assets.xcassets */; };
 		EC99F1AC24C742680006B9B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC99F1AA24C742680006B9B1 /* LaunchScreen.storyboard */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		5C432043992ED172B8007188 /* Pods-CryptocoinChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptocoinChallenge.release.xcconfig"; path = "Target Support Files/Pods-CryptocoinChallenge/Pods-CryptocoinChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		61EEB71DD691BAA6A1F3C7DC /* Pods_CryptocoinChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptocoinChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC0E730624CE24C900557D63 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		EC99F19C24C742670006B9B1 /* CryptocoinChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptocoinChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC99F19F24C742670006B9B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC99F1A124C742670006B9B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				EC99F1DD24C7705E0006B9B1 /* UIViewController+Extension.swift */,
 				EC99F20E24C8FF090006B9B1 /* String+Extension.swift */,
 				EC99F21224C9A9BD0006B9B1 /* UIView+Extension.swift */,
+				EC0E730624CE24C900557D63 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			files = (
 				EC99F1ED24C784D10006B9B1 /* FiatWalletModel.swift in Sources */,
 				EC99F20B24C8A5BA0006B9B1 /* CollectionTableCell.swift in Sources */,
+				EC0E730724CE24C900557D63 /* UIImageView+Extension.swift in Sources */,
 				EC99F1F924C792130006B9B1 /* DataManager.swift in Sources */,
 				EC99F1E924C784960006B9B1 /* WalletModel.swift in Sources */,
 				EC99F1E324C7843E0006B9B1 /* CryptocoinModel.swift in Sources */,
