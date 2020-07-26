@@ -17,8 +17,7 @@ class CollectionTableCell: UITableViewCell {
     private(set) weak var symbolLabel: UILabel!
     private(set) weak var detailsLabel: UILabel!
     
-
-    // MARK: Init
+    // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -149,6 +148,11 @@ extension CollectionTableCell {
             if walletModel.isDefault {
                 defaultWalletImageView.image = UIImage(named: "defaultWallet.png")
             }
+            
+            if let asset = DataManager.sharedInstance.cryptocoins
+                .first(where: ({ $0.id == walletModel.cryptocoinId })) {
+                    iconImageView.loadSvg(from: asset.attributes.logo, placeholder: UIImage(named: "placeholder.png"))
+            }
         }
         
         if let commodityWalletModel = model as? CommodityWalletModel {
@@ -157,10 +161,13 @@ extension CollectionTableCell {
             if commodityWalletModel.isDefault {
                 defaultWalletImageView.image = UIImage(named: "defaultWallet.png")
             }
+            
+            if let asset = DataManager.sharedInstance.commodities
+                .first(where: ({ $0.id == commodityWalletModel.cryptocoinId })) {
+                    iconImageView.loadSvg(from: asset.attributes.logo, placeholder: UIImage(named: "placeholder.png"))
+            }
         }
 
-        // TODO: - Missing logo from json - to discuss
-        iconImageView.loadSvg(from: nil, placeholder: UIImage(named: "placeholder.png"))
         nameLabel.text = model.name
     }
     
@@ -168,12 +175,16 @@ extension CollectionTableCell {
         guard  let model = model as? FiatWalletModel else {
             return
         }
-        
-        // TODO: - Missing logo from json - to discuss
+    
         iconImageView.loadSvg(from: nil, placeholder: UIImage(named: "placeholder.png"))
         nameLabel.text = model.name
         symbolLabel.text = model.fiatSymbol
         detailsLabel.text = model.balance
+        
+        if let asset = DataManager.sharedInstance.fiats
+            .first(where: ({ $0.id == model.fiatId })) {
+                iconImageView.loadSvg(from: asset.attributes.logo, placeholder: UIImage(named: "placeholder.png"))
+        }
     }
 }
 
