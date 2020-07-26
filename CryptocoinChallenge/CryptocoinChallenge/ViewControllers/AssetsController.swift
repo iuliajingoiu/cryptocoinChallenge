@@ -12,6 +12,9 @@ class AssetsController: UIViewController {
 
     private(set) weak var segmentedControlView: SegmentedControlView!
     private(set) var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    private(set) var cryptocoinController = AssetsTableViewController(data: .init())
+    private(set) var commoditiesController = AssetsTableViewController(data: .init())
+    private(set) var fiatsController = AssetsTableViewController(data: .init())
     private(set) var pages = [UIViewController]()
     private(set) var assetsViewModel = AssetsViewModel()
     private(set) var collectionsViewModel = CollectionsViewModel()
@@ -50,50 +53,43 @@ class AssetsController: UIViewController {
 
         self.segmentedControlView = segmentedControlView
         addChildViewController(pageViewController, in: container)
+        pages = [cryptocoinController, commoditiesController, fiatsController]
     }
 }
 
 // MARK: - Helpers
 extension AssetsController {
     private func fetchCollections() {
-        assetsViewModel.fetchCollections{ [weak self] collections in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                self.segmentedControlView.items = self.assetsViewModel.collections.map { $0.title }
-            }
+        let group = DispatchGroup()
+        group.enter()
+        assetsViewModel.fetchCollections{ collections in
+            group.leave()
         }
         
-        collectionsViewModel.fetchCryptocoins { [weak self] cryptocoins in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                let cryptocoinController = AssetsTableViewController(data: self.collectionsViewModel.cryptocoins)
-                self.pages.append(cryptocoinController)
-                self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: false, completion: nil)
-            }
+        group.enter()
+        collectionsViewModel.fetchCryptocoins { cryptocoins in
+            group.leave()
         }
         
-        collectionsViewModel.fetchCommodities { [weak self] commodities in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                let commoditiesController = AssetsTableViewController(data: self.collectionsViewModel.commodities)
-                self.pages.append(commoditiesController)
-            }
+        group.enter()
+        collectionsViewModel.fetchCommodities { commodities in
+            group.leave()
         }
         
-        collectionsViewModel.fetchFiats { [weak self] fiats in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                let fiatsController = AssetsTableViewController(data: self.collectionsViewModel.fiats)
-                self.pages.append(fiatsController)
+        group.enter()
+        collectionsViewModel.fetchFiats { fiats in
+            group.leave()
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else {
+                return
             }
+            self.segmentedControlView.items = self.assetsViewModel.collections.map { $0.title }
+            self.cryptocoinController.dataSource = self.collectionsViewModel.cryptocoins
+            self.commoditiesController.dataSource = self.collectionsViewModel.commodities
+            self.fiatsController.dataSource = self.collectionsViewModel.fiats
+            self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: true, completion: nil)
         }
     }
 }

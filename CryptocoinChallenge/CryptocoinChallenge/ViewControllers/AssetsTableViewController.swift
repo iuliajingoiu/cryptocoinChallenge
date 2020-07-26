@@ -13,7 +13,7 @@ class AssetsTableViewController: UIViewController {
     private(set) var tableView: UITableView!
     private(set) var collectionsViewModel = CollectionsViewModel()
     
-    var dataSource: [CollectionBaseProtocol]
+    var dataSource = [CollectionBaseProtocol]()
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -22,8 +22,10 @@ class AssetsTableViewController: UIViewController {
     }
     
     // MARK: - Init
-    init(data: [CollectionBaseProtocol]) {
-        self.dataSource = data
+    init(data: [CollectionBaseProtocol]?) {
+        if let data = data {
+            self.dataSource = data
+        }
         super.init(nibName: nil, bundle: nil)
     }
     

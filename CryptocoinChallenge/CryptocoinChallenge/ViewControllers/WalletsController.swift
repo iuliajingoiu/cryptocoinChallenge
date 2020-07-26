@@ -12,6 +12,9 @@ class WalletsController: UIViewController {
 
     private(set) weak var segmentedControlView: SegmentedControlView!
     private(set) var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    private(set) var walletsController = AssetsTableViewController(data: .init())
+    private(set) var commodityWalletsController = AssetsTableViewController(data: .init())
+    private(set) var fiatsWalletsController = AssetsTableViewController(data: .init())
     private(set) var pages = [UIViewController]()
     private(set) var walletsViewModel = WalletsViewModel()
     private(set) var collectionsViewModel = CollectionsViewModel()
@@ -50,47 +53,40 @@ class WalletsController: UIViewController {
 
         self.segmentedControlView = segmentedControlView
         addChildViewController(pageViewController, in: container)
+        pages = [walletsController, commodityWalletsController, fiatsWalletsController]
     }
     
     private func fetchCollections() {
-        walletsViewModel.fetchWallets { [weak self] collections in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                self.segmentedControlView.items = self.walletsViewModel.wallets.map { $0.title }
-            }
+        let group = DispatchGroup()
+        group.enter()
+        walletsViewModel.fetchWallets { collections in
+            group.leave()
         }
         
-        collectionsViewModel.fetchWallets { [weak self] wallets in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                let walletsController = AssetsTableViewController(data: self.collectionsViewModel.wallets)
-                self.pages.append(walletsController)
-                self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: false, completion: nil)
-            }
+        group.enter()
+        collectionsViewModel.fetchWallets { wallets in
+            group.leave()
         }
         
-        collectionsViewModel.fetchCommodityWallets { [weak self] commodityWallets in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                let commodityWalletsController = AssetsTableViewController(data: self.collectionsViewModel.commodityWallets)
-                self.pages.append(commodityWalletsController)
-            }
+        group.enter()
+        collectionsViewModel.fetchCommodityWallets { commodityWallets in
+            group.leave()
         }
         
-        collectionsViewModel.fetchFiatWallets { [weak self] fiatWallets in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                let fiatsWalletsController = AssetsTableViewController(data: self.collectionsViewModel.fiatWallets)
-                self.pages.append(fiatsWalletsController)
+        group.enter()
+        collectionsViewModel.fetchFiatWallets { fiatWallets in
+            group.leave()
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else {
+                return
             }
+            self.segmentedControlView.items = self.walletsViewModel.wallets.map { $0.title }
+            self.walletsController.dataSource = self.collectionsViewModel.wallets
+            self.commodityWalletsController.dataSource = self.collectionsViewModel.commodityWallets
+            self.fiatsWalletsController.dataSource = self.collectionsViewModel.fiatWallets
+            self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: true, completion: nil)
         }
     }
 }
